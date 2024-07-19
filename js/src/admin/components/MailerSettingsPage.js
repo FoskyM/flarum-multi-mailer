@@ -20,64 +20,64 @@ export default class MailerSettingsPage extends ExtensionPage {
       <div className="container MultiMailer-container">
         <table className="MailerSettingsPage-table">
           <thead>
-            <tr>
-              <th>Mail Suffix</th>
-              <th>Mail Host</th>
-              <th>Mail Port</th>
-              <th>Mail Username</th>
-              <th>Action</th>
-            </tr>
+          <tr>
+            <th>Mail Suffix</th>
+            <th>Mail Host</th>
+            <th>Mail Port</th>
+            <th>Mail Username</th>
+            <th>Action</th>
+          </tr>
           </thead>
           <tbody>
-            {this.records.map(record => (
-              <tr>
-                <td>{record.mail_suffix()}</td>
-                <td>{record.mail_host()}</td>
-                <td>{record.mail_port()}</td>
-                <td>{record.mail_username()}</td>
-                <td>
-                  <Button
-                    className={"Button Button--icon"}
-                    icon={"fas fa-edit"}
-                    onclick={() => {
-                      app.modal.show(MailerModal, { mailer: record });
-                    }}
-                  />
-                  <Button
-                    className={"Button Button--icon"}
-                    icon={"fas fa-trash"}
-                    disabled={this.records.length === 1 || this.loading || record.id() === 1}
-                    onclick={() => {
-                      record.delete().then(() => {
-                        this.records = this.records.filter(r => r !== record);
-                        m.redraw();
-                      });
-                    }}
-                  />
-                </td>
-              </tr>
-            ))}
+          {this.records.map(record => (
             <tr>
-              <td colspan="4">
+              <td>{record.mail_suffix()}</td>
+              <td>{record.mail_host()}</td>
+              <td>{record.mail_port()}</td>
+              <td>{record.mail_username()}</td>
+              <td>
                 <Button
-                  className={"Button Button--block"}
+                  className={"Button Button--icon"}
+                  icon={"fas fa-edit"}
                   onclick={() => {
-                    app.store.createRecord('multi-mailer').save(
-                      {
-                        mail_suffix: 'new.com',
-                        mail_port: 465,
-                        mail_encryption: 'ssl',
-                      }
-                    ).then(mailer => {
-                      this.records.push(mailer);
-                      app.modal.show(MailerModal, { mailer });
+                    app.modal.show(MailerModal, {mailer: record});
+                  }}
+                />
+                <Button
+                  className={"Button Button--icon"}
+                  icon={"fas fa-trash"}
+                  disabled={this.records.length === 1 || this.loading || record.id() === 1}
+                  onclick={() => {
+                    record.delete().then(() => {
+                      this.records = this.records.filter(r => r !== record);
+                      m.redraw();
                     });
                   }}
-                >
-                  <i className="fas fa-plus"></i> Add
-                </Button>
+                />
               </td>
             </tr>
+          ))}
+          <tr>
+            <td colspan="4">
+              <Button
+                className={"Button Button--block"}
+                onclick={() => {
+                  app.store.createRecord('multi-mailer')
+                    .save({
+                      mail_suffix: 'new.com',
+                      mail_port: 465,
+                      mail_encryption: 'ssl',
+                    })
+                    .then(mailer => {
+                      this.records.push(mailer);
+                      app.modal.show(MailerModal, {mailer});
+                    });
+                }}
+              >
+                <i className="fas fa-plus"></i> Add
+              </Button>
+            </td>
+          </tr>
           </tbody>
         </table>
       </div>
