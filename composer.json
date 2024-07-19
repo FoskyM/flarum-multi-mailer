@@ -10,8 +10,8 @@
     "type": "flarum-extension",
     "license": "MIT",
     "require": {
-        "flarum/core": "^1.2.0",
-        "symfony/mailgun-mailer": "^5.0"
+        "flarum/core": "^1.8.0",
+        "swiftmailer/swiftmailer": "^6.3"
     },
     "authors": [
         {
