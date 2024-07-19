@@ -1,15 +1,17 @@
 {
-    "name": "foskm/flarum-multi-mailer",
-    "description": "Allow you to use different smtp configs determined by user email domain.",
+    "name": "foskym/flarum-multi-mailer",
+    "description": "Allow you to use different smtp configs determined by user email domain suffix.",
     "keywords": [
         "flarum",
         "multi",
-        "mailer"
+        "mailer",
+        "smtp"
     ],
     "type": "flarum-extension",
     "license": "MIT",
     "require": {
-        "flarum/core": "^1.2.0"
+        "flarum/core": "^1.2.0",
+        "symfony/mailgun-mailer": "^5.0"
     },
     "authors": [
         {
@@ -26,7 +28,7 @@
     },
     "extra": {
         "flarum-extension": {
-            "title": "Multi Mailer",
+            "title": "Multi SMTP Mailer",
             "category": "",
             "icon": {
                 "name": "fas fa-mail-bulk",
