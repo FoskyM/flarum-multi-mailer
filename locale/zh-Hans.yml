@@ -9,6 +9,6 @@ foskym-multi-mailer:
   # Checkout https://docs.flarum.org/extend/i18n/#appendix-a-standard-key-format
   admin:
     email:
-      mail_suffix: 'Mail Suffix'
+      mail_suffix: '邮箱地址后缀'
 
   forum:
