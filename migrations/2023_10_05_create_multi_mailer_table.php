@@ -23,7 +23,6 @@ return [
             $table->string('mail_password', 200)->nullable();
             $table->string('mail_port', 40)->nullable();
             $table->string('mail_username', 200)->nullable();
-            $table->string('mail_domain', 200)->nullable();
         });
     },
     'down' => function (Builder $schema) {
