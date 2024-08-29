@@ -47,6 +47,7 @@ class MultiTransport extends Swift_SmtpTransport
             }
         }
 
+        $settings = app('flarum.settings');
         $sent = 0;
 
         foreach ($mailers as $mailer) {
@@ -59,7 +60,10 @@ class MultiTransport extends Swift_SmtpTransport
             $this->setEncryption($mailer['mailer']->mail_encryption);
             $this->setUsername($mailer['mailer']->mail_username);
             $this->setPassword($mailer['mailer']->mail_password);
+
+            $message->setFrom($mailer['mailer']->mail_from, $settings->get('forum_title'));
             $message->setTo($mailer['email']);
+
             $this->start();
             $sent += parent::send($message, $failedRecipients);
             $this->stop();
