@@ -1,6 +1,7 @@
 import app from 'flarum/admin/app';
 import ExtensionPage from 'flarum/admin/components/ExtensionPage';
 import Button from 'flarum/common/components/Button';
+import LinkButton from 'flarum/common/components/LinkButton';
 import MailerModal from "./MailerModal";
 
 export default class MailerSettingsPage extends ExtensionPage {
@@ -80,6 +81,10 @@ export default class MailerSettingsPage extends ExtensionPage {
           </tr>
           </tbody>
         </table>
+
+        <LinkButton href={app.route('mail')}>
+          Select mail driver and test
+        </LinkButton>
       </div>
     );
   }
